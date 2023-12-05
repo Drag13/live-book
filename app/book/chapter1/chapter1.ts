@@ -1,4 +1,4 @@
-import { ModuleBuilder } from "@/builder/builder";
+import { ModuleBuilder } from '@/builder/builder';
 
 export const yusya1Module = ModuleBuilder.create('Сніг іде зі Снігокраю', `y1`)
   .addEntryScene({
@@ -227,16 +227,17 @@ export const yusya1Module = ModuleBuilder.create('Сніг іде зі Сніг�
     nextSceneId: '18',
     description: `Почалася підготовка до польоту`,
   })
+  .addChoiceAction({ operator: 'increment', target: 'tophill', value: 1 })
   .addConditionalScene(
     {
       id: `17-1`,
       description: `Після вчорашнього верхівка гори вже не здавалася Юсі такою високою. Разом з мамою та Сніжиками, яких мама ніяк не могла помітити, Юся хутко піднялася на самісіньку вершину та розпакувала гелікоптер`,
     },
-    { operator: 'eq', target: 'tophill', value: 1 }
+    { operator: 'eq', target: 'tophill', value: 2 }
   )
   .addSceneChoices({
     nextSceneId: '18',
-    description: `Почалася підготовка до польотму`,
+    description: `Почалася підготовка до польоту`,
   })
   .addScene({
     id: '18',

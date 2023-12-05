@@ -1,15 +1,23 @@
-import { availableModules } from '@/app/book';
-import { AppLink } from '@/app/shared/component/app-link';
-import { H } from '@/app/shared/typography/h';
-import { notFound } from 'next/navigation';
+'use client';
 
-export default function ChapterPage({
-  params,
-}: {
-  params: {
-    chapterId: string;
-    sceneId: string;
-  };
-}) {
-  return <>{params.chapterId}: {params.sceneId}</>;
+import { AppLink } from '@/app/shared/component/app-link';
+import { useBook } from '../book.context';
+
+export default function ChapterPage({}) {
+  const bookRunner = useBook();
+
+  return (
+    <>
+      <p>{bookRunner.sceneDescription}</p>
+      <ul>
+        {bookRunner.choices.map((c) => (
+          <li key={c.id}>
+            <AppLink href={c.nextSceneId} onClick={() => bookRunner.act(c.id)}>
+              {c.description}
+            </AppLink>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
