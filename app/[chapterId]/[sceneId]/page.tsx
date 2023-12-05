@@ -2,22 +2,27 @@
 
 import { AppLink } from '@/app/shared/component/app-link';
 import { useBook } from '../book.context';
+import { P } from '@/app/shared/typography/p';
+import { Li, Ul } from '@/app/shared/component/app-list';
+import { AppText } from '@/app/shared/typography/app-text';
 
 export default function ChapterPage({}) {
   const bookRunner = useBook();
 
   return (
     <>
-      <p>{bookRunner.sceneDescription}</p>
-      <ul>
+      <P>
+        <AppText>{bookRunner.sceneDescription}</AppText>
+      </P>
+      <Ul>
         {bookRunner.choices.map((c) => (
-          <li key={c.id}>
+          <Li key={c.id}>
             <AppLink href={c.nextSceneId} onClick={() => bookRunner.act(c.id)}>
-              {c.description}
+              <AppText>{c.description}</AppText>
             </AppLink>
-          </li>
+          </Li>
         ))}
-      </ul>
+      </Ul>
     </>
   );
 }

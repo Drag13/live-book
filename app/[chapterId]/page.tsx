@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { availableModules } from '../book';
 import { H } from '../shared/typography/h';
 import { AppLink } from '../shared/component/app-link';
+import { AppText } from '../shared/typography/app-text';
 
 export default function ChapterPage({
   params,
@@ -17,9 +18,11 @@ export default function ChapterPage({
 
   return (
     <>
-      <H>{selectedModule.name}</H>
+      <H>
+        <AppText>{selectedModule.name}</AppText>
+      </H>
       <AppLink href={`/${chapterId}/${selectedModule.startScene.id}`}>
-        Почати казку
+        <AppText>Почати казку</AppText>
       </AppLink>
     </>
   );
