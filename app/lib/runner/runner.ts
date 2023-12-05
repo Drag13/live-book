@@ -19,6 +19,10 @@ export class BookRunner<T extends string> {
     return this._state;
   }
 
+  get moduleId() {
+    return this._module.id;
+  }
+
   constructor(module: Module<T>) {
     this._module = module;
     this._currentScene = module.startScene;

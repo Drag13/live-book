@@ -17,7 +17,10 @@ export default function ChapterPage({}) {
       <Ul>
         {bookRunner.choices.map((c) => (
           <Li key={c.id}>
-            <AppLink href={c.nextSceneId} onClick={() => bookRunner.act(c.id)}>
+            <AppLink
+              href={`/${bookRunner.moduleId}/${c.nextSceneId}`}
+              onClick={() => bookRunner.act(c.id)}
+            >
               <AppText>{c.description}</AppText>
             </AppLink>
           </Li>
